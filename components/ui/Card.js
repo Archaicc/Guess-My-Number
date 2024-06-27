@@ -1,18 +1,14 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-
-const Card = () => {
-  return (
-    <View style={styles.inputContainer}>
-      <Text>Card</Text>
-    </View>
-  );
+import Colors from "../../constants/colors";
+const Card = ({ children }) => {
+  return <View style={styles.card}>{children}</View>;
 };
 
 export default Card;
 
 const styles = StyleSheet.create({
-  inputContainer: {
+  card: {
     justifyContent: "center",
     alignItems: "center",
     marginTop: 36,
