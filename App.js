@@ -10,10 +10,11 @@ import GameOverScreen from "./screens/GameOverScreen";
 
 import Colors from "./constants/colors";
 
-export default function App({ roundsNumber, userNumber, onStartNewGame }) {
+export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
+  const [guessRounds, setGuessRounds] = useState(0);
 
   const fontsLoading = {
     "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
@@ -54,6 +55,11 @@ export default function App({ roundsNumber, userNumber, onStartNewGame }) {
     setGameIsOver(true);
   }
 
+  function startNewGameHander() {
+    setUserNumber(null);
+    setGuessRounds(0);
+  }
+
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
@@ -63,7 +69,13 @@ export default function App({ roundsNumber, userNumber, onStartNewGame }) {
   }
 
   if (gameIsOver && userNumber) {
-    screen = <GameOverScreen />;
+    screen = (
+      <GameOverScreen
+        userNumber={userNumber}
+        roundsNumber={guessRounds}
+        onStartNewGame={startNewGameHander}
+      />
+    );
   }
 
   return (
