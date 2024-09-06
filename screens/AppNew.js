@@ -10,7 +10,7 @@ import GameOverScreen from "./screens/GameOverScreen";
 
 import Colors from "./constants/colors";
 
-export default function App({ roundsNumber, userNumber, onStartNewGame }) {
+export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
